@@ -23,13 +23,16 @@ public class LoaderArm {
     public void moveDownArm (double power){
         elevator.setPower (-power);
     }
-    public void openArm (double position){
+
+    public void openArm (double position) {
         armServo.setPosition(position);
     }
+
     public void closeArm (double position){
         armServo.setPosition(-position);
 
     }
+
     public void stopMotor(){
         elevator.setPower(0);
     }
