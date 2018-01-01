@@ -10,7 +10,7 @@ import com.qualcomm.robotcore.hardware.HardwareMap;
 
 public class RobotNavigator {
     private DcMotor leftMotor;
-    private DcMotor rightMotor;
+private DcMotor rightMotor;
 
     public boolean init(HardwareMap hardwareMap) {
         leftMotor = hardwareMap.get(DcMotor.class, "leftMotor");
@@ -30,13 +30,13 @@ public class RobotNavigator {
     }
 
     public void moveLeft (double power){
-        leftMotor.setPower(-power);
-        rightMotor.setPower(power);
+        leftMotor.setPower(power);
+        rightMotor.setPower(-power);
     }
 
     public void moveRight (double power){
-        leftMotor.setPower (power);
-        rightMotor.setPower(-power);
+        leftMotor.setPower (-power);
+        rightMotor.setPower(power);
     }
 
     public void stopMotor() {
