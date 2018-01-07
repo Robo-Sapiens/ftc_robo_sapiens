@@ -3,6 +3,7 @@ package org.firstinspires.ftc.team13180;
 import com.qualcomm.robotcore.eventloop.opmode.Autonomous;
 import com.qualcomm.robotcore.eventloop.opmode.LinearOpMode;
 import com.qualcomm.robotcore.hardware.HardwareMap;
+import com.qualcomm.robotcore.hardware.Servo;
 
 /**
  * Created by Shivam Adeshara on 12/29/2017.
@@ -13,6 +14,9 @@ import com.qualcomm.robotcore.hardware.HardwareMap;
 public class AutonomousWithTime extends LinearOpMode {
     private RobotNavigator robotNavigator;
     private LoaderArm loaderArm;
+    private JewelColorSensor jewelColorSensor;
+    private JewelKnockoutArm jewelKnockoutArm;
+
     @Override
     public void runOpMode () {
         double forwardPower = 0.5;
@@ -29,6 +33,12 @@ public class AutonomousWithTime extends LinearOpMode {
         loaderArm = new LoaderArm();
         loaderArm.init(hardwareMap);
 
+        jewelColorSensor = new JewelColorSensor();
+        jewelColorSensor.init(hardwareMap);
+
+        jewelKnockoutArm = new JewelKnockoutArm();
+        jewelKnockoutArm.init(hardwareMap);
+
         telemetry.addData("Status:", "initialized");
         telemetry.update();
 
@@ -38,7 +48,83 @@ public class AutonomousWithTime extends LinearOpMode {
         } catch(Exception e) {
 
         }
+
         waitForStart();
+
+        //
+        try {
+            jewelKnockoutArm.jewelServo.getController().pwmEnable();
+            Thread.sleep(2000);
+            Servo.Direction direction = jewelKnockoutArm.jewelServo.getDirection();
+            //jewelKnockoutArm.jewelServo.setDirection(Servo.Direction.REVERSE);
+            jewelKnockoutArm.jewelServo.setDirection(Servo.Direction.FORWARD);
+            Thread.sleep(2000);
+            telemetry.addData("Position:", jewelKnockoutArm.getJewelArmPosition());
+            //    telemetry.update();
+            // Move the Arm Down (180 Degree)
+            jewelKnockoutArm.setJewelArmPosition(1.0);
+            Thread.sleep(2000);
+            // mOVE THE ARM uP (90 DEGReE)
+            jewelKnockoutArm.setJewelArmPosition(0.5);
+            Thread.sleep(2000);
+            if(jewelColorSensor.isColorBlue()) {
+                // Move robot Forward
+                robotNavigator.moveForwardTime(0.25, 250);
+                // Move robot backward
+                robotNavigator.moveBackwardTime(0.25, 250);
+            } else if(jewelColorSensor.isColorRed()) {
+                // Move robot backward
+                robotNavigator.moveBackwardTime(0.25, 100);
+                // Move robot Forward
+                robotNavigator.moveForwardTime(0.25, 100);
+            }
+
+            telemetry.addData("Position:", jewelKnockoutArm.getJewelArmPosition());
+            //    telemetry.update();
+
+            // Move the Arm up
+            //jewelKnockoutArm.setJewelArmPosition(0.0);
+
+            telemetry.addData("Position:", jewelKnockoutArm.getJewelArmPosition());
+            telemetry.update();
+
+            //jewelKnockoutArm.jewelServo.setDirection(direction);
+
+        } catch (Exception e) {
+            telemetry.addData("Exception:", e);
+            telemetry.update();
+        }
+
+
+
+        //
+/*
+        try {
+            // Move the Arm Down
+            jewelKnockoutArm.setJewelArmPosition(0.5);
+            if(jewelColorSensor.isColorBlue()) {
+                // Move robot Forward
+                robotNavigator.moveForwardTime(0.25, 250);
+                // Move robot backward
+                robotNavigator.moveBackwardTime(0.25, 250);
+            } else if(jewelColorSensor.isColorRed()) {
+                // Move robot backward
+                robotNavigator.moveBackwardTime(0.25, 250);
+                // Move robot Forward
+                robotNavigator.moveForwardTime(0.25, 250);
+            }
+        } catch (Exception e) {
+            telemetry.addData("Exception:", e);
+            telemetry.update();
+        }
+
+*/
+        // Wait for 2 seconds
+        try {
+            Thread.sleep(2000);
+        } catch(Exception e) {
+
+        }
 
          try {
             // Move robot Forward

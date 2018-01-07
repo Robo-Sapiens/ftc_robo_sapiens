@@ -20,6 +20,7 @@ public class LoaderArm {
         elevator = hardwareMap.get(DcMotor.class, "elevator");
         elevator.setDirection(DcMotorSimple.Direction.REVERSE);
 
+        // TODO : Check this
         closeArm();
     }
 
