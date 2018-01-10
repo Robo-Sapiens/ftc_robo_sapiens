@@ -16,8 +16,8 @@ import com.qualcomm.robotcore.hardware.Servo;
 public class MyFirstAutonomous extends LinearOpMode {
 
     private Gyroscope imu;
-    private DcMotor motorTest1;
-    private DcMotor motorTest2; 
+    private DcMotor leftMotor;
+    private DcMotor rightMotor;
     private DcMotor motorTest3;
     private DcMotor motorTest4;
     private DigitalChannel digitalTouch;
@@ -28,8 +28,8 @@ public class MyFirstAutonomous extends LinearOpMode {
     @Override
     public void runOpMode() {
         imu = hardwareMap.get(Gyroscope.class, "imu");
-        motorTest1 = hardwareMap.get(DcMotor.class, "motorTest1");
-        motorTest2 = hardwareMap.get(DcMotor.class, "motorTest2");
+        leftMotor = hardwareMap.get(DcMotor.class, "leftMotor");
+        rightMotor = hardwareMap.get(DcMotor.class, "rightMotor");
         //motorTest3 = hardwareMap.get(DcMotor.class, "motorTest3");
         //motorTest4 = hardwareMap.get(DcMotor.class, "motorTest4");
         //digitalTouch = hardwareMap.get(DigitalChannel.class, "digitalTouch");
@@ -38,7 +38,7 @@ public class MyFirstAutonomous extends LinearOpMode {
         //servoTest2 = hardwareMap.get(Servo.class, "servoTest2");
 
         // One more direction is set to REVERSE
-        motorTest1.setDirection(DcMotor.Direction.REVERSE);
+        leftMotor.setDirection(DcMotor.Direction.REVERSE);
 
         telemetry.addData("Status", "Initialized");
         telemetry.update();
@@ -65,8 +65,8 @@ public class MyFirstAutonomous extends LinearOpMode {
     }
 
     public void driveForward(double power) {
-        motorTest1.setPower(power);
-        motorTest2.setPower(power);
+        leftMotor.setPower(power);
+        rightMotor.setPower(power);
         //motorLeft.setPower(power);
         //motorRight.setPower(power);
     }
@@ -81,8 +81,8 @@ public class MyFirstAutonomous extends LinearOpMode {
     }
 
     public void turnLeft(double power) {
-            motorTest1.setPower(-power);
-        motorTest2.setPower(power);
+        leftMotor.setPower(-power);
+        rightMotor.setPower(power);
         //motorLeft.setPower(-power);
         //motorRight.setPower(power);
     }
@@ -103,8 +103,8 @@ public class MyFirstAutonomous extends LinearOpMode {
     }
 
     public void stopDriving() {
-        motorTest1.setPower(0);
-        motorTest2.setPower(0);
+        leftMotor.setPower(0);
+        rightMotor.setPower(0);
         //motorLeft.setPower(0);
         //motorRight.setPower(0);
     }

@@ -27,7 +27,7 @@ public class AutonomousJewelArm extends LinearOpMode {
         int armTime = 1000;
 
         robotNavigator = new RobotNavigator();
-        //robotNavigator.init(hardwareMap);
+        robotNavigator.init(hardwareMap);
 
         loaderArm = new LoaderArm();
         //loaderArm.init(hardwareMap);
@@ -64,22 +64,41 @@ public class AutonomousJewelArm extends LinearOpMode {
             // Move the Arm Down
             jewelKnockoutArm.setJewelArmPosition(1.0);
             Thread.sleep(2000);
-            jewelKnockoutArm.setJewelArmPosition(0.5);
-            Thread.sleep(2000);
+
+            telemetry.addData("redColor", jewelColorSensor.colorSensor.red());
+            telemetry.addData("blueColor", jewelColorSensor.colorSensor.blue());
+            telemetry.addData("greenColor", jewelColorSensor.colorSensor.green());
+
             if(jewelColorSensor.isColorBlue()) {
-                // Move robot Forward
-                //robotNavigator.moveForwardTime(0.25, 250);
+                //Move robot Forward
+                robotNavigator.moveForwardTime(0.25, 250);
                 // Move robot backward
                 //robotNavigator.moveBackwardTime(0.25, 250);
+
+                telemetry.addData("redColor", "false");
+                telemetry.addData("blueColor", "true");
+
             } else if(jewelColorSensor.isColorRed()) {
                 // Move robot backward
-                //robotNavigator.moveBackwardTime(0.25, 100);
+                robotNavigator.moveBackwardTime(0.25, 100);
                 // Move robot Forward
                 //robotNavigator.moveForwardTime(0.25, 100);
+                telemetry.addData("redColor", "true");
+                telemetry.addData("blueColor", "false");
             }
 
+
+            telemetry.addData("redColor", jewelColorSensor.colorSensor.red());
+            telemetry.addData("blueColor", jewelColorSensor.colorSensor.blue());
+            telemetry.addData("greenColor", jewelColorSensor.colorSensor.green());
+
             telemetry.addData("Position:", jewelKnockoutArm.getJewelArmPosition());
+            telemetry.update();
+            Thread.sleep(2000);
         //    telemetry.update();
+
+            jewelKnockoutArm.setJewelArmPosition(0.5);
+            Thread.sleep(2000);
 
             // Move the Arm up
             //jewelKnockoutArm.setJewelArmPosition(0.0);
@@ -96,7 +115,7 @@ public class AutonomousJewelArm extends LinearOpMode {
 
         // Wait for 2 seconds
         try {
-            Thread.sleep(2000);
+            Thread.sleep(3000);
         } catch(Exception e) {
 
         }

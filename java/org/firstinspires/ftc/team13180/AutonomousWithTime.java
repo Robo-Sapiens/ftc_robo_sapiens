@@ -64,23 +64,26 @@ public class AutonomousWithTime extends LinearOpMode {
             // Move the Arm Down (180 Degree)
             jewelKnockoutArm.setJewelArmPosition(1.0);
             Thread.sleep(2000);
-            // mOVE THE ARM uP (90 DEGReE)
-            jewelKnockoutArm.setJewelArmPosition(0.5);
-            Thread.sleep(2000);
+
             if(jewelColorSensor.isColorBlue()) {
                 // Move robot Forward
-                robotNavigator.moveForwardTime(0.25, 250);
+                robotNavigator.moveForwardTime(0.50, 250);
                 // Move robot backward
-                robotNavigator.moveBackwardTime(0.25, 250);
+                //robotNavigator.moveBackwardTime(0.25, 250);
             } else if(jewelColorSensor.isColorRed()) {
                 // Move robot backward
-                robotNavigator.moveBackwardTime(0.25, 100);
+                robotNavigator.moveBackwardTime(0.50, 100);
                 // Move robot Forward
-                robotNavigator.moveForwardTime(0.25, 100);
+                // robotNavigator.moveForwardTime(0.25, 100);
             }
 
             telemetry.addData("Position:", jewelKnockoutArm.getJewelArmPosition());
             //    telemetry.update();
+
+            Thread.sleep(2000);
+            // mOVE THE ARM uP (90 DEGReE)
+            jewelKnockoutArm.setJewelArmPosition(0.5);
+            Thread.sleep(2000);
 
             // Move the Arm up
             //jewelKnockoutArm.setJewelArmPosition(0.0);

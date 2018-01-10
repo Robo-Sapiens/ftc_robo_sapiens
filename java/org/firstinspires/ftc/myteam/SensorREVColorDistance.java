@@ -95,7 +95,7 @@ public class SensorREVColorDistance extends LinearOpMode {
         // get a reference to the RelativeLayout so we can change the background
         // color of the Robot Controller app to match the hue detected by the RGB sensor.
         //int relativeLayoutId = hardwareMap.appContext.getResources().getIdentifier("RelativeLayout", "id", hardwareMap.appContext.getPackageName());
-        //final View relativeLayout = ((Activity) hardwareMap.appContext).findViewById(relativeLayoutId);
+        //final View relativeLayout = ((A ctivity) hardwareMap.appContext).findViewById(relativeLayoutId);
 
         // wait for the start button to be pressed.
         waitForStart();
@@ -113,13 +113,14 @@ public class SensorREVColorDistance extends LinearOpMode {
 
             // send the info back to driver station using telemetry function.
             //telemetry.addData("Alpha", sensorColor.alpha());
-            telemetry.addData("Red  ", sensorColor.red());
-            telemetry.addData("Green", sensorColor.green());
-            telemetry.addData("Blue ", sensorColor.blue());
+            //telemetry.addData("Red  ", sensorColor.red());
+            //telemetry.addData("Green", sensorColor.green());
+            //telemetry.addData("Blue ", sensorColor.blue());
             //telemetry.addData("Hue", hsvValues[0]);
 
             redColor = false;
             blueColor = false;
+            /*
             if(sensorColor.red() > 100 && sensorColor.green() < 100 &&  sensorColor.blue() < 100) {
                 redColor = true;
                 blueColor = false;
@@ -127,9 +128,24 @@ public class SensorREVColorDistance extends LinearOpMode {
                 redColor = false;
                 blueColor = true;
             }
+            */
+
+            if(sensorColor.red() >  sensorColor.blue()) {
+                redColor = true;
+                blueColor = false;
+            } else if(sensorColor.red() < sensorColor.blue()) {
+                redColor = false;
+                blueColor = true;
+            }
 
             telemetry.addData("redColor", redColor);
             telemetry.addData("blueColor", blueColor);
+            telemetry.addData("Red  ", sensorColor.red());
+            telemetry.addData("Green", sensorColor.green());
+            telemetry.addData("Blue ", sensorColor.blue());
+            telemetry.addData("Hue", hsvValues[0]);
+            telemetry.addData("Saturation", hsvValues[1]);
+            telemetry.addData("Value", hsvValues[2]);
 
             // change the background color to match the color detected by the RGB sensor.
             // pass a reference to the hue, saturation, and value array as an argument
@@ -143,6 +159,11 @@ public class SensorREVColorDistance extends LinearOpMode {
             */
 
             telemetry.update();
+            try {
+                Thread.sleep(3000);
+            } catch (Exception e) {
+
+            }
         }
 
         // Set the panel back to the default color
