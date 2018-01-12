@@ -1,6 +1,7 @@
 package org.firstinspires.ftc.team13180;
 
 import com.qualcomm.robotcore.eventloop.opmode.Autonomous;
+import com.qualcomm.robotcore.eventloop.opmode.Disabled;
 import com.qualcomm.robotcore.eventloop.opmode.LinearOpMode;
 
 /**
@@ -10,6 +11,7 @@ import com.qualcomm.robotcore.eventloop.opmode.LinearOpMode;
 
 
 @Autonomous(name="AutonomousRedTop", group="autonomusGroup1")
+@Disabled
 public class AutonomousRedTop extends LinearOpMode {
 
     @Override

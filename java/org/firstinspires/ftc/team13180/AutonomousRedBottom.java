@@ -1,6 +1,7 @@
 package org.firstinspires.ftc.team13180;
 
 import com.qualcomm.robotcore.eventloop.opmode.Autonomous;
+import com.qualcomm.robotcore.eventloop.opmode.Disabled;
 import com.qualcomm.robotcore.eventloop.opmode.LinearOpMode;
 
 /**
@@ -9,6 +10,7 @@ import com.qualcomm.robotcore.eventloop.opmode.LinearOpMode;
 
 
 @Autonomous(name="AutonomousRedBottom", group="autonomusGroup1")
+@Disabled
 public class AutonomousRedBottom extends LinearOpMode {
     @Override
     public void runOpMode() {

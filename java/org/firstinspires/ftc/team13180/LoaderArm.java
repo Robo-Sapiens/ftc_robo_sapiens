@@ -50,8 +50,9 @@ public class LoaderArm {
     }
 
     public void closeArm (){
-        armServo.setPosition(0.2);
-
+        //armServo.setPosition(0.2);
+        //armServo.setPosition(0.4);
+        armServo.setPosition(0.0);
     }
 
     public void stopArm(){

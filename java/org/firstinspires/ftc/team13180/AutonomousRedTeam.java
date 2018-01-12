@@ -1,9 +1,7 @@
 package org.firstinspires.ftc.team13180;
 
 import com.qualcomm.robotcore.eventloop.opmode.Autonomous;
-import com.qualcomm.robotcore.eventloop.opmode.Disabled;
 import com.qualcomm.robotcore.eventloop.opmode.LinearOpMode;
-import com.qualcomm.robotcore.hardware.HardwareMap;
 import com.qualcomm.robotcore.hardware.Servo;
 
 /**
@@ -11,9 +9,8 @@ import com.qualcomm.robotcore.hardware.Servo;
  * This is autonomous program with time
  */
 
-@Autonomous(name="AutonomousTime", group="autonomusGroup1")
-@Disabled
-public class AutonomousWithTime extends LinearOpMode {
+@Autonomous(name="AutonomousRedTeam", group="autonomusGroup1")
+public class AutonomousRedTeam extends LinearOpMode {
     private RobotNavigator robotNavigator;
     private LoaderArm loaderArm;
     private JewelColorSensor jewelColorSensor;
@@ -57,7 +54,7 @@ public class AutonomousWithTime extends LinearOpMode {
         try {
             jewelKnockoutArm.jewelServo.getController().pwmEnable();
             Thread.sleep(2000);
-            Servo.Direction direction = jewelKnockoutArm.jewelServo.getDirection();
+            //Servo.Direction direction = jewelKnockoutArm.jewelServo.getDirection();
             //jewelKnockoutArm.jewelServo.setDirection(Servo.Direction.REVERSE);
             jewelKnockoutArm.jewelServo.setDirection(Servo.Direction.FORWARD);
             Thread.sleep(2000);
@@ -83,7 +80,9 @@ public class AutonomousWithTime extends LinearOpMode {
             //    telemetry.update();
 
             Thread.sleep(2000);
-            // mOVE THE ARM uP (90 DEGReE)+
+            // mOVE THE ARM uP (90 DEGReE)
+            jewelKnockoutArm.setJewelArmPosition(0.5);
+            Thread.sleep(2000);
 
             // Move the Arm up
             //jewelKnockoutArm.setJewelArmPosition(0.0);
@@ -98,30 +97,6 @@ public class AutonomousWithTime extends LinearOpMode {
             telemetry.update();
         }
 
-
-
-        //
-/*
-        try {
-            // Move the Arm Down
-            jewelKnockoutArm.setJewelArmPosition(0.5);
-            if(jewelColorSensor.isColorBlue()) {
-                // Move robot Forward
-                robotNavigator.moveForwardTime(0.25, 250);
-                // Move robot backward
-                robotNavigator.moveBackwardTime(0.25, 250);
-            } else if(jewelColorSensor.isColorRed()) {
-                // Move robot backward
-                robotNavigator.moveBackwardTime(0.25, 250);
-                // Move robot Forward
-                robotNavigator.moveForwardTime(0.25, 250);
-            }
-        } catch (Exception e) {
-            telemetry.addData("Exception:", e);
-            telemetry.update();
-        }
-
-*/
         // Wait for 2 seconds
         try {
             Thread.sleep(2000);
@@ -129,6 +104,7 @@ public class AutonomousWithTime extends LinearOpMode {
 
         }
 
+        /*
          try {
             // Move robot Forward
             robotNavigator.moveForwardTime(forwardPower, forwardTime);
@@ -188,6 +164,6 @@ public class AutonomousWithTime extends LinearOpMode {
             telemetry.addData("Exception:", e);
             telemetry.update();
         }
-
+        */
     }
 }

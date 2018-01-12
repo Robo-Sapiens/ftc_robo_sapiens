@@ -5,7 +5,6 @@ import com.qualcomm.robotcore.eventloop.opmode.TeleOp;
 import com.qualcomm.robotcore.hardware.DcMotor;
 import com.qualcomm.robotcore.hardware.DigitalChannel;
 import com.qualcomm.robotcore.hardware.DistanceSensor;
-import com.qualcomm.robotcore.hardware.Gyroscope;
 import com.qualcomm.robotcore.hardware.Servo;
 
 import org.firstinspires.ftc.team13180.JewelKnockoutArm;
@@ -15,7 +14,7 @@ import org.firstinspires.ftc.team13180.JewelKnockoutArm;
  */
 
 @TeleOp
-public class MyFIRSTJavaOpModeShivam extends LinearOpMode {
+public class ManualOpMode13180 extends LinearOpMode {
     //private Gyroscope imu;
     private DcMotor leftMotor;
     private DcMotor rightMotor;

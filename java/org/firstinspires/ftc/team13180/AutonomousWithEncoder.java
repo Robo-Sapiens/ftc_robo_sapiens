@@ -1,6 +1,7 @@
 package org.firstinspires.ftc.team13180;
 
 import com.qualcomm.robotcore.eventloop.opmode.Autonomous;
+import com.qualcomm.robotcore.eventloop.opmode.Disabled;
 import com.qualcomm.robotcore.eventloop.opmode.LinearOpMode;
 
 /**
@@ -8,6 +9,7 @@ import com.qualcomm.robotcore.eventloop.opmode.LinearOpMode;
  * This program is autonomous with encoder.
  */
 @Autonomous(name="AutonomousEncoder", group="autonomusGroup1")
+@Disabled
 public class AutonomousWithEncoder extends LinearOpMode {
     @Override
     public void runOpMode() {
