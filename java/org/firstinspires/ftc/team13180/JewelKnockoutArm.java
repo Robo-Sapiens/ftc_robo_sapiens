@@ -10,7 +10,7 @@ import com.qualcomm.robotcore.hardware.Servo;
  */
 
 public class JewelKnockoutArm {
-    public Servo jewelServo;
+    private Servo jewelServo;
 
     public void init(HardwareMap hardwareMap) {
         jewelServo = hardwareMap.get(Servo.class, "jewelServo");
@@ -18,7 +18,9 @@ public class JewelKnockoutArm {
         jewelServo.getController().pwmEnable();
         //jewelServo.setDirection(Servo.Direction.REVERSE);
     }
-
+    public Servo getJewelServo() {
+        return jewelServo;
+    }
     public void upJewelArm () {
         jewelServo.setPosition(0.5);
     }

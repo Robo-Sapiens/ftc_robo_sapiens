@@ -48,10 +48,10 @@ public class ManualOpMode13180 extends LinearOpMode {
         jewelKnockoutArm = new JewelKnockoutArm();
         jewelKnockoutArm.init(hardwareMap);
 
-        jewelKnockoutArm.jewelServo.getController().pwmEnable();
+        jewelKnockoutArm.getJewelServo().getController().pwmEnable();
         try {
             Thread.sleep(1000);
-            jewelKnockoutArm.jewelServo.setDirection(Servo.Direction.FORWARD);
+            jewelKnockoutArm.getJewelServo().setDirection(Servo.Direction.FORWARD);
             Thread.sleep(1000);
             // Move the Arm up (90 Degree)
             jewelKnockoutArm.setJewelArmPosition(0.5);

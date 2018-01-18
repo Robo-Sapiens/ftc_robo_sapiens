@@ -55,11 +55,11 @@ public class AutonomousWithTime extends LinearOpMode {
 
         //
         try {
-            jewelKnockoutArm.jewelServo.getController().pwmEnable();
+            jewelKnockoutArm.getJewelServo().getController().pwmEnable();
             Thread.sleep(2000);
-            Servo.Direction direction = jewelKnockoutArm.jewelServo.getDirection();
+            Servo.Direction direction = jewelKnockoutArm.getJewelServo().getDirection();
             //jewelKnockoutArm.jewelServo.setDirection(Servo.Direction.REVERSE);
-            jewelKnockoutArm.jewelServo.setDirection(Servo.Direction.FORWARD);
+            jewelKnockoutArm.getJewelServo().setDirection(Servo.Direction.FORWARD);
             Thread.sleep(2000);
             telemetry.addData("Position:", jewelKnockoutArm.getJewelArmPosition());
             //    telemetry.update();
@@ -159,15 +159,15 @@ public class AutonomousWithTime extends LinearOpMode {
            // telemetry.update();
 
             loaderArm.openArm();
-            telemetry.addData("Servo Position:", loaderArm.armServo.getPosition());
+            telemetry.addData("Servo Position:", loaderArm.getArmServo().getPosition());
             //telemetry.update();
 
             Thread.sleep(2000);
              loaderArm.closeArm();
              Thread.sleep(2000);
-             telemetry.addData("Servo Position:", loaderArm.armServo.getPosition());
+             telemetry.addData("Servo Position:", loaderArm.getArmServo().getPosition());
              loaderArm.openArm();
-             telemetry.addData("Servo Position:", loaderArm.armServo.getPosition());
+             telemetry.addData("Servo Position:", loaderArm.getArmServo().getPosition());
              telemetry.update();
              Thread.sleep(2000);
 

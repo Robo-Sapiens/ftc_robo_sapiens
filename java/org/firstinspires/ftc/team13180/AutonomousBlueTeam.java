@@ -43,7 +43,7 @@ public class AutonomousBlueTeam extends LinearOpMode {
 
         // Wait for 2 seconds
         try {
-            Thread.sleep(2000);
+            Thread.sleep(500);
         } catch(Exception e) {
 
         }
@@ -52,17 +52,17 @@ public class AutonomousBlueTeam extends LinearOpMode {
 
         //
         try {
-            jewelKnockoutArm.jewelServo.getController().pwmEnable();
-            Thread.sleep(2000);
-            Servo.Direction direction = jewelKnockoutArm.jewelServo.getDirection();
+            jewelKnockoutArm.getJewelServo().getController().pwmEnable();
+            Thread.sleep(500);
+            Servo.Direction direction = jewelKnockoutArm.getJewelServo().getDirection();
             //jewelKnockoutArm.jewelServo.setDirection(Servo.Direction.REVERSE);
-            jewelKnockoutArm.jewelServo.setDirection(Servo.Direction.FORWARD);
-            Thread.sleep(2000);
+            jewelKnockoutArm.getJewelServo().setDirection(Servo.Direction.FORWARD);
+            Thread.sleep(500);
             telemetry.addData("Position:", jewelKnockoutArm.getJewelArmPosition());
             //    telemetry.update();
             // Move the Arm Down (180 Degree)
             jewelKnockoutArm.setJewelArmPosition(1.0);
-            Thread.sleep(2000);
+            Thread.sleep(500);
 
             if(jewelColorSensor.isColorRed()) {
                 // Move robot Forward
@@ -79,10 +79,10 @@ public class AutonomousBlueTeam extends LinearOpMode {
             telemetry.addData("Position:", jewelKnockoutArm.getJewelArmPosition());
             //    telemetry.update();
 
-            Thread.sleep(2000);
+            Thread.sleep(500);
             // mOVE THE ARM uP (90 DEGReE)
             jewelKnockoutArm.setJewelArmPosition(0.5);
-            Thread.sleep(2000);
+            Thread.sleep(500);
 
             // Move the Arm up
             //jewelKnockoutArm.setJewelArmPosition(0.0);
@@ -100,7 +100,7 @@ public class AutonomousBlueTeam extends LinearOpMode {
 
         // Wait for 2 seconds
         try {
-            Thread.sleep(2000);
+            Thread.sleep(500);
         } catch(Exception e) {
 
         }

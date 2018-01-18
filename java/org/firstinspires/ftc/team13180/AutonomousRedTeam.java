@@ -41,9 +41,9 @@ public class AutonomousRedTeam extends LinearOpMode {
         telemetry.addData("Status:", "initialized");
         telemetry.update();
 
-        // Wait for 2 seconds
+        // Wait for 1/2 seconds
         try {
-            Thread.sleep(2000);
+            Thread.sleep(500);
         } catch(Exception e) {
 
         }
@@ -52,21 +52,22 @@ public class AutonomousRedTeam extends LinearOpMode {
 
         //
         try {
-            jewelKnockoutArm.jewelServo.getController().pwmEnable();
-            Thread.sleep(2000);
+            jewelKnockoutArm.getJewelServo().getController().pwmEnable();
+            Thread.sleep(500);
+
             //Servo.Direction direction = jewelKnockoutArm.jewelServo.getDirection();
             //jewelKnockoutArm.jewelServo.setDirection(Servo.Direction.REVERSE);
-            jewelKnockoutArm.jewelServo.setDirection(Servo.Direction.FORWARD);
-            Thread.sleep(2000);
+            jewelKnockoutArm.getJewelServo().setDirection(Servo.Direction.FORWARD);
+            Thread.sleep(500);
             telemetry.addData("Position:", jewelKnockoutArm.getJewelArmPosition());
             //    telemetry.update();
             // Move the Arm Down (180 Degree)
             jewelKnockoutArm.setJewelArmPosition(1.0);
-            Thread.sleep(2000);
+            Thread.sleep(500);
 
             if(jewelColorSensor.isColorBlue()) {
                 // Move robot Forward
-                robotNavigator.moveForwardTime(0.50, 250);
+                robotNavigator.moveForwardTime(0.50, 100);
                 // Move robot backward
                 //robotNavigator.moveBackwardTime(0.25, 250);
             } else if(jewelColorSensor.isColorRed()) {
@@ -79,10 +80,10 @@ public class AutonomousRedTeam extends LinearOpMode {
             telemetry.addData("Position:", jewelKnockoutArm.getJewelArmPosition());
             //    telemetry.update();
 
-            Thread.sleep(2000);
+            Thread.sleep(500);
             // mOVE THE ARM uP (90 DEGReE)
             jewelKnockoutArm.setJewelArmPosition(0.5);
-            Thread.sleep(2000);
+            Thread.sleep(500);
 
             // Move the Arm up
             //jewelKnockoutArm.setJewelArmPosition(0.0);
@@ -99,7 +100,7 @@ public class AutonomousRedTeam extends LinearOpMode {
 
         // Wait for 2 seconds
         try {
-            Thread.sleep(2000);
+            Thread.sleep(500);
         } catch(Exception e) {
 
         }

@@ -15,7 +15,7 @@ import com.qualcomm.robotcore.hardware.ColorSensor;
 
 
 public class JewelColorSensor {
-    public ColorSensor colorSensor;
+    private ColorSensor colorSensor;
 
     boolean blueColor = false;
     boolean redColor = false;
@@ -23,7 +23,9 @@ public class JewelColorSensor {
     public void init(HardwareMap hardwareMap) {
         colorSensor = hardwareMap.get(ColorSensor.class, "colorSensor");
     }
-
+    public ColorSensor getColorSensor() {
+        return colorSensor;
+    }
     public boolean isColorRed() {
         /*redColor = false;
         blueColor = false;

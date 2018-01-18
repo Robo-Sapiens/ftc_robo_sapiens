@@ -12,11 +12,10 @@ public class RobotNavigator {
     private DcMotor leftMotor;
     private DcMotor rightMotor;
 
-    public boolean init(HardwareMap hardwareMap) {
+    public void init(HardwareMap hardwareMap) {
         leftMotor = hardwareMap.get(DcMotor.class, "leftMotor");
         rightMotor = hardwareMap.get(DcMotor.class, "rightMotor");
         leftMotor.setDirection(DcMotor.Direction.REVERSE);
-        return true;
     }
 
     public void moveForward(double power) {

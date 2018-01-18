@@ -1,6 +1,7 @@
 package org.firstinspires.ftc.team13180;
 
 import com.qualcomm.robotcore.eventloop.opmode.Autonomous;
+import com.qualcomm.robotcore.eventloop.opmode.Disabled;
 import com.qualcomm.robotcore.eventloop.opmode.LinearOpMode;
 import com.qualcomm.robotcore.hardware.Servo;
 
@@ -10,6 +11,7 @@ import com.qualcomm.robotcore.hardware.Servo;
  */
 
 @Autonomous(name="AutonomousJewelArm", group="autonomusGroup1")
+@Disabled
 public class AutonomousJewelArm extends LinearOpMode {
     private RobotNavigator robotNavigator;
     private LoaderArm loaderArm;
@@ -53,11 +55,11 @@ public class AutonomousJewelArm extends LinearOpMode {
         waitForStart();
 
         try {
-            jewelKnockoutArm.jewelServo.getController().pwmEnable();
+            jewelKnockoutArm.getJewelServo().getController().pwmEnable();
             Thread.sleep(2000);
-            Servo.Direction direction = jewelKnockoutArm.jewelServo.getDirection();
+            Servo.Direction direction = jewelKnockoutArm.getJewelServo().getDirection();
             //jewelKnockoutArm.jewelServo.setDirection(Servo.Direction.REVERSE);
-            jewelKnockoutArm.jewelServo.setDirection(Servo.Direction.FORWARD);
+            jewelKnockoutArm.getJewelServo().setDirection(Servo.Direction.FORWARD);
             Thread.sleep(2000);
             telemetry.addData("Position:", jewelKnockoutArm.getJewelArmPosition());
         //    telemetry.update();
@@ -65,9 +67,9 @@ public class AutonomousJewelArm extends LinearOpMode {
             jewelKnockoutArm.setJewelArmPosition(1.0);
             Thread.sleep(2000);
 
-            telemetry.addData("redColor", jewelColorSensor.colorSensor.red());
-            telemetry.addData("blueColor", jewelColorSensor.colorSensor.blue());
-            telemetry.addData("greenColor", jewelColorSensor.colorSensor.green());
+            telemetry.addData("redColor", jewelColorSensor.getColorSensor().red());
+            telemetry.addData("blueColor", jewelColorSensor.getColorSensor().blue());
+            telemetry.addData("greenColor", jewelColorSensor.getColorSensor().green());
 
             if(jewelColorSensor.isColorBlue()) {
                 //Move robot Forward
@@ -87,10 +89,9 @@ public class AutonomousJewelArm extends LinearOpMode {
                 telemetry.addData("blueColor", "false");
             }
 
-
-            telemetry.addData("redColor", jewelColorSensor.colorSensor.red());
-            telemetry.addData("blueColor", jewelColorSensor.colorSensor.blue());
-            telemetry.addData("greenColor", jewelColorSensor.colorSensor.green());
+            telemetry.addData("redColor", jewelColorSensor.getColorSensor().red());
+            telemetry.addData("blueColor", jewelColorSensor.getColorSensor().blue());
+            telemetry.addData("greenColor", jewelColorSensor.getColorSensor().green());
 
             telemetry.addData("Position:", jewelKnockoutArm.getJewelArmPosition());
             telemetry.update();

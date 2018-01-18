@@ -1,5 +1,6 @@
 package org.firstinspires.ftc.team13180;
 
+import com.qualcomm.hardware.ArmableUsbDevice;
 import com.qualcomm.robotcore.hardware.DcMotor;
 import com.qualcomm.robotcore.hardware.DcMotorSimple;
 import com.qualcomm.robotcore.hardware.HardwareMap;
@@ -11,7 +12,7 @@ import com.qualcomm.robotcore.hardware.Servo;
 
 public class LoaderArm {
     private DcMotor elevator;
-    public Servo armServo;
+    private Servo armServo;
 
     public void init(HardwareMap hardwareMap) {
         armServo = hardwareMap.get(Servo.class, "armServo");
@@ -22,6 +23,15 @@ public class LoaderArm {
 
         // TODO : Check this
         closeArm();
+        try {
+            moveUpArmTime(0.25, 1000);
+        } catch (Exception e) {
+
+        }
+    }
+
+    public Servo getArmServo() {
+        return armServo;
     }
 
     public void moveUpArm (double power){
